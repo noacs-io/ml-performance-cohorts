@@ -1,7 +1,9 @@
 ---
 title: "Manuscript title here"
-output: html_document
 author: "Your name here"
+output:
+  pdf_document: default
+  html_document: default
 bibliography: bibliography.bib
 csl: vancouver.csl
 ---

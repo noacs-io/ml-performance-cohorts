@@ -18,9 +18,13 @@
 ## them). They all need to be sourced however when you compile your
 ## manuscript file or run this file as a job, as that happens in a
 ## clean R session.
+library(rofi)
 noacsr::source_all_functions()
 
 ## Import data
 data <- import_data(test = TRUE)
+
+combined.datasets <- rofi::merge_data(data, test = TRUE)
+combined.datasets$sofi <- rofi::create_ofi(combined.datasets)
 
 ## Whatever you do next, maybe clean data?
