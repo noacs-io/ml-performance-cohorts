@@ -29,7 +29,22 @@ the console and you should only see headings -->
 
 # Introduction
 
-Traumatic injuries<!-- Call it just trauma--> are a significant public
+Traumatic injuries<!-- Call it just trauma--> <!-- KS: when removing the word injuries it can be good to define "trauma" to differ from psychological trauma,
+A good citation is:
+@book{gerdin_risk_2015,
+    location = {Stockholm},
+    title = {The risk of dying: predicting trauma mortality in urban Indian
+             hospitals},
+    isbn = {978-91-7676-157-1},
+    shorttitle = {The risk of dying},
+    publisher = {Karolinska Institutet},
+    author = {Gerdin, Martin},
+    date = {2015},
+    note = {{OCLC}: 942942790},
+}
+A good read if you have time ;), PDF URL: https://openarchive.ki.se/xmlui/bitstream/handle/10616/44832/Thesis_Martin_Gerdin.pdf?sequence=3&isAllowed=y
+--> 
+are a significant public
 health concern worldwide, accounting for a substantial portion of
 morbidity and mortality rates, being the cause of more than 5 million
 fatalities each year [@WHO2014]<!-- This is an old reference, most
@@ -47,7 +62,7 @@ current figure is 4.3 million. Use:
 -->.  Trauma, and care of patients
 with traumatic injuries, have long been a significant target point for
 healthcare improvement programs [@WHO2009].  Multidisciplinary
-mortality and morbidity conferences form the cornerstone of
+mortality and morbidity <!-- KS: The order "morbidity and mortality" is mainly used in the literature. I also received a comment on this in my final version. --> conferences form the cornerstone of
 initiatives dedicated to enhancing the quality of trauma care and,
 consequently, improving patient outcomes [@Santana2014].
 
@@ -70,6 +85,7 @@ false positives. [Saknar tydlig källa här]<!-- Consider changing the
 order of these paragraphs, so that you introduce audit filters before
 mortality and morbidity conferences, considering that audit filters
 are used to select patients for those conferences-->
+<!-- KS: you will probably need to explain exactly what audit fitlers are. That they are a system that flags abnormal clinical parameters as possible OFI. These flag cases are then reviewed by two nurses and then a conference -->
 
 To enhance the precision of the selection process, there have been
 efforts to introduce trauma mortality prediction models. Nevertheless,
@@ -103,7 +119,7 @@ and across clinical trauma cohorts.
 
 # Methods
 <!-- I would find this section easier to read if you followed some
-reporting guideline, like TRIPOD--> This is a registry-based study,
+reporting guideline, like TRIPOD--> <!-- KS: prefer "We conducted a registry[...]" -->This is a registry-based study,
 encompassing all trauma patients enlisted in both the Karolinska
 University Hospital trauma registry and the trauma care quality
 database spanning from 2012 to 2022. The Karolinska University
@@ -142,7 +158,7 @@ two specialized nurses. If the second review identified potential areas
 for improvement (OFI), the case was marked for discussion in a
 multidisciplinary conference.
 
-All patients reviewed for possible opportunities for improvement between
+All patients reviewed for possible opportunities for improvement <!-- KS: use OFI consistently after you have abbreviated it --> between
 the years 2013 and 2021 are included in the study, with the exception of
 patients under the age of 15 due to differing clinical pathways in this
 subgroup.
@@ -232,6 +248,7 @@ Gantt chart over the project timeline.
 
 # Back-up Plan
 
+<!-- KS: Gianluigi will most likely not like this explaination so if you have time just come up with a random backup project -->
 Currently, there is no need to develop a thorough backup plan since all
 the necessary data for the statistical analysis has been collected and
 is accessible.
