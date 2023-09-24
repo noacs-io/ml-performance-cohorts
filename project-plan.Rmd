@@ -29,50 +29,87 @@ the console and you should only see headings -->
 
 # Introduction
 
-Traumatic injuries are a significant public health concern worldwide,
-accounting for a substantial portion of morbidity and mortality rates,
-being the cause of more than 5 million fatalities each year [@WHO2014].
-Trauma, and care of patients with traumatic injuries, have long been a
-significant target point for healthcare improvement programs [@WHO2009].
-Multidisciplinary mortality and morbidity conferences form the
-cornerstone of initiatives dedicated to enhancing the quality of trauma
-care and, consequently, improving patient outcomes [@Santana2014].
+Traumatic injuries<!-- Call it just trauma--> <!-- KS: when removing the word injuries it can be good to define "trauma" to differ from psychological trauma,
+A good citation is:
+@book{gerdin_risk_2015,
+    location = {Stockholm},
+    title = {The risk of dying: predicting trauma mortality in urban Indian
+             hospitals},
+    isbn = {978-91-7676-157-1},
+    shorttitle = {The risk of dying},
+    publisher = {Karolinska Institutet},
+    author = {Gerdin, Martin},
+    date = {2015},
+    note = {{OCLC}: 942942790},
+}
+A good read if you have time ;), PDF URL: https://openarchive.ki.se/xmlui/bitstream/handle/10616/44832/Thesis_Martin_Gerdin.pdf?sequence=3&isAllowed=y
+--> 
+are a significant public
+health concern worldwide, accounting for a substantial portion of
+morbidity and mortality rates, being the cause of more than 5 million
+fatalities each year [@WHO2014]<!-- This is an old reference, most
+current figure is 4.3 million. Use:
+@article{injuries2020,
+  title =	 {Injuries—Level 1 cause},
+  volume =	 {396},
+  ISSN =	 {0140-6736},
+  journal =	 {The Lancet},
+  publisher =	 {Elsevier BV},
+  author =	 {{GBD 2019 Diseases and Injuries Collaborators}},
+  year =	 {2020},
+  month =	 {Oct},
+}
+-->.  Trauma, and care of patients
+with traumatic injuries, have long been a significant target point for
+healthcare improvement programs [@WHO2009].  Multidisciplinary
+mortality and morbidity <!-- KS: The order "morbidity and mortality" is mainly used in the literature. I also received a comment on this in my final version. --> conferences form the cornerstone of
+initiatives dedicated to enhancing the quality of trauma care and,
+consequently, improving patient outcomes [@Santana2014].
 
 At mortality and morbidity conferences, representatives from different
 professions and specialties adjacent to trauma care come together to
-discuss care provided to a specific case and compare it to care given
-under optimal conditions. The findings of such a conference are whether
-opportunities for improvement (OFI) can be found in any given case.
-Examples of opportunities for improvement may include lack of resources
-and management errors [@Lazzara2020].
+discuss care provided to a specific patient and compare it to care
+given under optimal conditions. The findings of such a conference are
+whether opportunities for improvement (OFI) can be found in any given
+case.  Examples of opportunities for improvement<!-- You can use OFI
+here, you abbreviated it in the previous sentence--> may include lack
+of resources and management errors [@Lazzara2020].
 
 Audit filters are applied to determine possible events in patient care
 that are associated with unfavourable outcomes. The occurrence of such
 an event triggers a review process, and when appropriate leads to the
 implementation of corrective measures to address systematic errors and
-feedback to individual practitioners [@McDermott_1994]. The use of audit
-filters has its drawbacks, being associated with high rates of false
-positives. [Saknar tydlig källa här]
+feedback to individual practitioners [@McDermott_1994]. The use of
+audit filters has its drawbacks, being associated with high rates of
+false positives. [Saknar tydlig källa här]<!-- Consider changing the
+order of these paragraphs, so that you introduce audit filters before
+mortality and morbidity conferences, considering that audit filters
+are used to select patients for those conferences-->
+<!-- KS: you will probably need to explain exactly what audit fitlers are. That they are a system that flags abnormal clinical parameters as possible OFI. These flag cases are then reviewed by two nurses and then a conference -->
 
 To enhance the precision of the selection process, there have been
 efforts to introduce trauma mortality prediction models. Nevertheless,
-the performance of these models has been unsatisfactory [@Ghorbani2018]
-[@Heim_2016]. This is likely attributed to the fact that these models
-were originally developed with a focus on predicting mortality rather
-than morbidity or instances of care failures within the realm of trauma
-care. Machine learning-based prediction models have been found to
-outperform conventional methods to predict opportunities for
-improvement. *Hur gör jag med källhänvisning här?, referera till
-preprint artikel?*
+the performance of these models has been unsatisfactory
+[@Ghorbani2018] [@Heim_2016]<!-- When you cite more than one
+reference, use [@Ghorbani2018; @Heim_2016]--><!-- Elaborate, how was
+the performance unsatisfactory?--> . This is likely attributed to the
+fact that<!-- "attributed to the fact that" can be just "because"-->
+these models were originally developed with a focus on predicting
+mortality rather than morbidity or instances of care failures within
+the realm of trauma care. Machine learning-based prediction models
+have been found to outperform conventional methods to predict
+opportunities for improvement. *Hur gör jag med källhänvisning här?,
+referera till preprint artikel?*<!-- You can do that-->
 
 Men make up a disproportionally large group compared to women when it
 comes to trauma. Each year, almost twice as many men die due to
 traumatic injury when compared to women, with the distribution of
-different types of injury varying by demographic and region [@WHO2014].
-It is important, that due to the differences between these groups that
-the model for prediction has similar performance in these subgroups.
-Furthermore, it is important to establish if trained models perform
-equally well across different cohorts within traumatic injuries.
+different types of injury varying by demographic and region
+[@WHO2014].  It is important, that due to the differences between
+these groups that the model for prediction has similar performance in
+these subgroups.  Furthermore, it is important to establish if trained
+models perform equally well across different cohorts within traumatic
+injuries.<!-- Elaborate on these cohorts-->
 
 # Aim
 
@@ -81,14 +118,15 @@ opportunities for improvement in trauma care among women compared to men
 and across clinical trauma cohorts.
 
 # Methods
-
-This is a registry-based study, encompassing all trauma patients
-enlisted in both the Karolinska University Hospital trauma registry and
-the trauma care quality database spanning from 2012 to 2022. The
-Karolinska University Hospital in Solna is equivalent to a level 1
-trauma centre and manages approximately 1,500 acute trauma patients each
-year[@Ghorbani2018][Swetrau, rapport]. The trauma registry comprises all
-patients admitted to the hospital with trauma team activation,
+<!-- I would find this section easier to read if you followed some
+reporting guideline, like TRIPOD--> <!-- KS: prefer "We conducted a registry[...]" -->This is a registry-based study,
+encompassing all trauma patients enlisted in both the Karolinska
+University Hospital trauma registry and the trauma care quality
+database spanning from 2012 to 2022. The Karolinska University
+Hospital in Solna is equivalent to a level 1 trauma centre and manages
+approximately 1,500 acute trauma patients each
+year[@Ghorbani2018][Swetrau, rapport]. The trauma registry comprises
+all patients admitted to the hospital with trauma team activation,
 irrespective of their Injury Severity Score (ISS), as well as patients
 with an ISS exceeding 9. Included in the registry is data on vital
 signs, injuries, interventions, times, and patient demographics.
@@ -120,7 +158,7 @@ two specialized nurses. If the second review identified potential areas
 for improvement (OFI), the case was marked for discussion in a
 multidisciplinary conference.
 
-All patients reviewed for possible opportunities for improvement between
+All patients reviewed for possible opportunities for improvement <!-- KS: use OFI consistently after you have abbreviated it --> between
 the years 2013 and 2021 are included in the study, with the exception of
 patients under the age of 15 due to differing clinical pathways in this
 subgroup.
@@ -131,32 +169,33 @@ or "No, there is no significant difference in models prediction of OFI
 in different cohorts." Data for this will be extracted from the trauma
 care quality database and run through different previously trained
 machine learning models. *osäker på om outcome här är hållbart
-formulerad*
+formulerad*<!--Good enough for now-->
 
 All variables from the trauma registry will be considered as potential
-predictors in our analysis. These variables include information spanning
-the pre-hospital, initial care, and subsequent in-hospital phases, which
+predictors in our analysis<!-- Note that the models are already
+developed. So you should write about what have already been done,
+i.e. these variables are already incorporated into the
+models-->. These variables include information spanning the
+pre-hospital, initial care, and subsequent in-hospital phases, which
 include initial vital signs, timing, and types of procedures and
-interventions, duration and level of care, injury details, mechanisms of
-injury, injury types, and standard demographic information. This array
-of predictors comprises both continuous and categorical variables,
-ultimately resulting in the final models utilizing a total of 45
-predictors. (infoga bilaga) All available data will be used, with a
-sample size of 6310 patients. This is due to previously developed
-prediction models being based on all available data, as well as
-including all 45 predictors regardless of the learner used for the
+interventions, duration and level of care, injury details, mechanisms
+of injury, injury types, and standard demographic information. This
+array of predictors comprises both continuous and categorical
+variables, ultimately resulting in the final models utilizing a total
+of 45 predictors. (infoga bilaga) All available data will be used,
+with a sample size of 6310 patients. This is due to previously
+developed prediction models being based on all available data, as well
+as including all 45 predictors regardless of the learner used for the
 development of the model.
 
-The models have been developed and trained on the data set previously to
-this study. Eight models are included, all being developed using the
-Tidymodels framework (). These include logistic regression (LR), random
-forest (RF), decision tree (DT), support vector machine with a radial
-basis kernel (SVM), XGBoost, LightGBM, CatBoost, and k-nearest neighbor
-(k-NN).
+The models have been developed and trained on the data set previously
+to this study<!-- Add preprint citation-->. Eight models are included,
+all being developed using the Tidymodels framework (). These include
+logistic regression (LR), random forest (RF), decision tree (DT),
+support vector machine with a radial basis kernel (SVM), XGBoost,
+LightGBM, CatBoost, and k-nearest neighbor (k-NN).
 
-To assess different models' performance across different cohorts, data
-from different cohorts run through multiple models. These cohorts are
-defined as follows:
+The different models' performance were assessed in the following cohorts:
 
 1.  Blunt multi-system trauma: Blunt trauma with AIS ≥ 3 in at least two
     of the following AIS body regions: head, face, neck, thorax,
@@ -194,7 +233,7 @@ defined as follows:
     b.  Pre- or in-hospital intubation
 
 Along with these cohorts, all machine learning models will be assessed
-in regard to differences between male and female gender in their
+in regard to differences between male and female sex in their
 prediction of OFI.
 
 We will employ a 95% confidence level and a 5% significance level for
@@ -209,6 +248,7 @@ Gantt chart over the project timeline.
 
 # Back-up Plan
 
+<!-- KS: Gianluigi will most likely not like this explaination so if you have time just come up with a random backup project -->
 Currently, there is no need to develop a thorough backup plan since all
 the necessary data for the statistical analysis has been collected and
 is accessible.
