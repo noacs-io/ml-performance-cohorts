@@ -22,13 +22,43 @@ library(rofi)
 noacsr::source_all_functions()
 
 ## Import data
-data <- import_data(test = TRUE)
+data <- import_data(test = TRUE) # Need to add test = TRUE when you run
 
-combined.datasets <- rofi::merge_data(data, test = TRUE)
-combined.datasets$sofi <- rofi::create_ofi(combined.datasets)
+combined.datasets <- rofi::merge_data(data,test = TRUE)
+combined.datasets$ofi <- rofi::create_ofi(combined.datasets)
 
-## Whatever you do next, maybe clean data?
+# I suggest switching to create.dataset()  function when moving to real data, 
+# it adds 2022 data but it doesent work for the test data?
 
 
+##############################################
+# JA: Added functions from previous projects #
+##############################################
+
+#If you run create.data() you can skip the steps untill i mark it
+combined.datasets <- clean_audit_filters(combined.datasets)
+
+## Separate and store cases without known outcome
+missing.outcome <- is.na(combined.datasets$ofi)
+combined.datasets <- combined.datasets[!missing.outcome,]
+
+combined.datasets <- combined.datasets[combined.datasets$pt_age_yrs > 14,]
+
+## Fix formating and remove wrong values like 999
+combined.datasets <- clean_all_predictors(combined.datasets)
+
+# Skip untill the next step
+
+dataset <- combined.datasets
+
+# Adds specific trauma quality cohorts
+dataset <- create_cohorts(dataset)
+
+# Adds "other cohort" instead of NA
+dataset$cohort[is.na(dataset$cohort) == TRUE] <- "Other cohort"
+
+########################
+# End of edits from JA #
+########################
 
 
