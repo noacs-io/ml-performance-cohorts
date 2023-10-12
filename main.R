@@ -65,3 +65,4 @@ dataset$cohort[is.na(dataset$cohort) == TRUE] <- "Other cohort"
 ########################
 
 
+results <- readRDS("/opt/data/ml-ofi/random_predictions.rds")
