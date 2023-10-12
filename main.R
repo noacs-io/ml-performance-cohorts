@@ -63,6 +63,20 @@ dataset$cohort[is.na(dataset$cohort) == TRUE] <- "Other cohort"
 ########################
 # End of edits from JA #
 ########################
+# install.packages("pROC") # Install the first time
 
-
+  library(pROC)
+# load results and merge into main dataframe.
 results <- readRDS("/opt/data/ml-ofi/random_predictions.rds")
+dataset <- merge(dataset, results$cat, by = "did", all.x = TRUE)
+
+# Calculate AUC for the model as a whole
+binary_labels <- ifelse(dataset$ofi == "Yes", 1, 0)
+print(pROC::auc(binary_labels, dataset$repeat_1))
+
+#### ex på hur man kan räkna AUC för blunt multisystem without Traumatic brain injury  
+
+bm.no.tbi <- dataset[dataset$cohort == "blunt multisystem without TBI",]
+
+bm.no.tbi.auc <- pROC::auc(ifelse(bm.no.tbi$ofi == "Yes", 1, 0), bm.no.tbi$repeat_1)
+print(bm.no.tbi.auc)
