@@ -29,6 +29,7 @@ combined.datasets$ofi <- rofi::create_ofi(combined.datasets)
 
 # I suggest switching to create.dataset()  function when moving to real data, 
 # it adds 2022 data but it doesent work for the test data?
+# It does everything from import_data to clean_all_predictors
 
 
 ##############################################
@@ -42,6 +43,7 @@ combined.datasets <- clean_audit_filters(combined.datasets)
 missing.outcome <- is.na(combined.datasets$ofi)
 combined.datasets <- combined.datasets[!missing.outcome,]
 
+# We exkluder patients under 15 since they go through a different clinical and review pathway.
 combined.datasets <- combined.datasets[combined.datasets$pt_age_yrs > 14,]
 
 ## Fix formating and remove wrong values like 999
@@ -57,6 +59,7 @@ dataset <- create_cohorts(dataset)
 # Adds "other cohort" instead of NA
 dataset$cohort[is.na(dataset$cohort) == TRUE] <- "Other cohort"
 
+# You can visualize the cohorts through: table(dataset$cohort)
 ########################
 # End of edits from JA #
 ########################
