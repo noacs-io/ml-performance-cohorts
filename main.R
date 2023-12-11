@@ -18,42 +18,10 @@
 ## them). They all need to be sourced however when you compile your
 ## manuscript file or run this file as a job, as that happens in a
 ## clean R session.
-library(rofi)
-noacsr::source_all_functions()
 
-## Import data
-data <- import_data(test = TRUE) # Need to add test = TRUE when you run
-
-combined.datasets <- rofi::merge_data(data,test = TRUE)
-combined.datasets$ofi <- rofi::create_ofi(combined.datasets)
-
-# I suggest switching to create.dataset()  function when moving to real data, 
-# it adds 2022 data but it doesent work for the test data?
-# It does everything from import_data to clean_all_predictors
-
-
-##############################################
-# JA: Added functions from previous projects #
-##############################################
-
-#If you run create.data() you can skip the steps untill i mark it
-combined.datasets <- clean_audit_filters(combined.datasets)
-
-## Separate and store cases without known outcome
-missing.outcome <- is.na(combined.datasets$ofi)
-combined.datasets <- combined.datasets[!missing.outcome,]
-
-# We exkluder patients under 15 since they go through a different clinical and review pathway.
-combined.datasets <- combined.datasets[combined.datasets$pt_age_yrs > 14,]
-
-## Fix formating and remove wrong values like 999
-combined.datasets <- clean_all_predictors(combined.datasets)
-
-# Skip untill the next step
 set.seed(2023) # for reproducibility
 dir.create("results", showWarnings = FALSE) # ensure results dir exists
 
-dataset <- combined.datasets
 library(rofi)
 library(tidymodels)
 library(gmodels)
@@ -61,22 +29,13 @@ library(dplyr)
 library(pROC)
 library(ggplot2)
 
-# Adds specific trauma quality cohorts
-dataset <- create_cohorts(dataset)
 noacsr::source_all_functions()
 tidymodels_prefer()
 
-# Adds "other cohort" instead of NA
-dataset$cohort[is.na(dataset$cohort) == TRUE] <- "Other cohort"
 # Settings
 n.bootstraps <- 1000
 model.name <- "xgb"
 
-# You can visualize the cohorts through: table(dataset$cohort)
-########################
-# End of edits from JA #
-########################
-# install.packages("pROC") # Install the first time
 ## Import data
 data <- import_data(silent = TRUE)
 dataset <- rofi::merge_data(data)
@@ -95,7 +54,6 @@ dataset <-  dataset %>%
   # Create trauma cohorts
   mutate(cohort = create_cohorts(.))
 
-  library(pROC)
 # load results and merge into main dataframe.
 results <- readRDS("/opt/data/ml-ofi/random_predictions.rds")
 dataset <- merge(dataset, results$cat, by = "did", all.x = TRUE)
@@ -127,24 +85,7 @@ main.results.path <- "results/main_results.rds"
 
 bm.no.tbi <- dataset[dataset$cohort == "blunt multisystem without TBI",]
 
-<<<<<<< HEAD
-bm.no.tbi.auc <- pROC::auc(ifelse(bm.no.tbi$ofi == "Yes", 1, 0), bm.no.tbi$repeat_1)
-print(bm.no.tbi.auc)
 
-#### Table1
-
-install.packages("gtsummary")
-
-library(tidyverse)
-library(gtsummary)
-
-table1 <- 
-  trial %>%
-  tbl_summary(include = c(age, grade, response))
-
-  
-
-=======
 if(!file.exists(main.results.path)) {
   
   results <- cohort.datasets$data %>%
@@ -245,4 +186,4 @@ cohort.roc <- ggroc(cohort.roc.objs) +
   annotate("text", x=0.41, y=0.485, label= "No discrimination", size = 4.5)
 
 ggsave("figures/roc.pdf", plot = cohort.roc, device = "pdf", height=10, width = 10)
->>>>>>> 19a7107a2e221110594525abd2339e6ea3974803
+

@@ -8,8 +8,7 @@ bibliography: bibliography.bib
 csl: vancouver.csl
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+
 ```{r setup, include=FALSE, echo=FALSE}
 library(knitr)
 library(kableExtra)
