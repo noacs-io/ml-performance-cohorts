@@ -83,11 +83,15 @@ With AI, computing is used to mimic human intelligence, characterized by its abi
 
 ### AI in trauma care
 
+<!-- Expand on this section to introduce AI/ML in trauma care more generally, and then focus on the application of ML to select patients for M&M -->
+
 To enhance the precision of the selection process for mortality and morbidity conferences, there have been efforts to introduce trauma mortality prediction models. Nevertheless, the performance of these models has been unsatisfactory, being poor predictors for OFI [@Ghorbani2018; @Heim_2016]. This is likely because these models were originally developed with a focus on predicting mortality rather than morbidity or instances of care failures within the realm of trauma care.
 
 Machine learning-based prediction models have been found to outperform conventional methods to predict opportunities for improvement [@Attergrim2023].
 
 #### Trauma care in different patient cohorts
+
+<!-- Similar performance across different subgroups is also important from a fairness perspective, meaning that if the model performs worse among women, then we risk providing lower quality care to women, because we might miss important OFI -->
 
 Men make up a disproportionally large group compared to women when it comes to trauma. Each year, almost twice as many men die due to traumatic injury when compared to women, with the distribution of different types of injury varying by demographic and region [@WHO2014]. Females have been shown to have a higher survival following trauma in higher income countries, whereas those in lower income countries show no difference compared to men. Differences in cell-mediated immune response following haemorrhage, differences in post-traumatic cytokine levels, and potential protective effects of oestrogen have been proposed to be the cause of the disparity between these groups [@Pendleton2022]. It is important, that due to the differences between men and women, that the model for prediction has similar performance in these subgroups. Furthermore, it is important to establish if trained models perform equally well across different cohorts within the wider span of trauma, such as patients with traumatic brain injury (TBI) and without.
 
@@ -104,6 +108,12 @@ To assess the difference in performance of prediction models for opportunities f
 We conducted a registry-based study, encompassing all trauma patients enlisted in both the Karolinska University Hospital trauma registry and the trauma care quality database spanning from 2012 to 2022. The Karolinska University Hospital in Solna is equivalent to a level 1 trauma centre and manages approximately 1,500 acute trauma patients each year [@Ghorbani2018; @swetrau]. The trauma registry comprises all patients admitted to the hospital with trauma team activation, irrespective of their Injury Severity Score (ISS), as well as patients with an ISS exceeding 9. Included in the registry is data on vital signs, injuries, interventions, times, and patient demographics.
 
 The trauma registry encompasses approximately 12,000 patients treated from 2012 to 2022. The trauma care quality database in turn is a subset of the trauma registry, including about 6000 patients selected for review in the years 2013-2022.
+
+<!-- Consider citing Hussein's paper in your definition of OFI: "The outcome was the presence of OFI, as decided by the morbidity and mortality conference. An OFI is any failure of care including, but not limited to, any potentially preventable or preventable death, delay in treatment, clinical judgment error, missed diagnosis and technical error as decided by the mortality and morbidity conference. The study outcome is binary with the levels “Yes - At least one OFI identified” and “No - No OFI identified”."
+
+https://sjtrem.biomedcentral.com/articles/10.1186/s13049-023-01157-y
+
+-->
 
 OFI are identified through meetings of the multidisciplinary review board during mortality and morbidity conferences. An OFI is a consensus decision made during a conference and includes proposals for corrective actions. These in turn are recorded in the trauma care quality database. The trauma care quality database also includes data relevant to mortality and morbidity conferences, such as audit filters. The mortality and morbidity conferences at Karolinska University Hospital involve professionals from various specialities within trauma care, including surgery, neurosurgery, orthopaedics, anaesthesia, intensive care, nursing, and radiology. Cases considered for a conference go through multiple rounds of review. Mortality leads to direct inclusion.
 
@@ -244,6 +254,7 @@ taking account of sampling strategy
 
 ### Participants
 
+
 ```{r tab1, echo=FALSE, fig.cap="Selected sample characteristics", fig.align='center' }
 if (output.format == "latex") {
   tab1 <- t1kable(create.tableone(dataset), "latex", longtable = T, booktabs = T) %>%
@@ -259,6 +270,7 @@ tab1
 ```
 
 Karolinska trauma registry contains 11864 patients, of which 6310 are reviewed for OFI, either through selection by individual review or application of audit filters, as well as an unknown process (n=2). Through this, 1316 patients were selected for the morbidity conference, and 596 patients for the mortality conference. Out of 596 deaths reviewed, 35 were found to be preventable (n=4) or possibly preventable (n=31). The remaining 561 patients were thus rendered non-preventable without OFI. Further, 1316 alive patients were included during a morbidity conference, of which 396 (7%) were identified as cases with OFI.
+
 
 Among the 6310 patients, the majority (n=4383) (69%) were male, and the mean age was 45 (SD 21). Overall, the mortality in the group was 599 (9%).
 
