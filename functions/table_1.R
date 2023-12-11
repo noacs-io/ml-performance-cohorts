@@ -1,20 +1,21 @@
-format_table1 <- function(data) {
-  
-  dpc <- data
-  #####################################
+library(table1)
+library(labelled)
+
+format.table1 <- function(data) {
+    #####################################
   # Change factors to readable names ##
   #####################################
   # "korrekt_triage"  
-  #dpc$korrekt_triage <- factor(      ##### Ta bort!?!?!
-  #  dpc$korrekt_triage,
+  #data$korrekt_triage <- factor(      ##### Ta bort!?!?!
+  #  data$korrekt_triage,
   #  levels = c("Ja", "Nej", "Övertag annat sjukhus"), 
   #  labels = c("Korrekt triage",
   #             "Incorrect triage",
   #             "Transfer from other hosptial"))
   
   #"host_transfered" 
-  dpc$host_transfered <- factor(
-    dpc$host_transfered,
+  data$host_transfered <- factor(
+    data$host_transfered,
     levels = c(1, 2, 3, 4), 
     labels = c("Not moved",
                "Moved to KUH",
@@ -23,16 +24,16 @@ format_table1 <- function(data) {
   
   ## "ed_tta"
   
- # ###### TA BORT - registrerat t.om   2017-11-06
-#  dpc$ed_tta <- factor(
-#    dpc$ed_tta,
-#    levels = c(1, 2), 
-#    labels = c("Trauma team activation",
-#               "No trauma team activation"))   
+  # ###### TA BORT - registrerat t.om   2017-11-06
+  #  data$ed_tta <- factor(
+  #    data$ed_tta,
+  #    levels = c(1, 2), 
+  #    labels = c("Trauma team activation",
+  #               "No trauma team activation"))   
   
   # ed_emerg_proc_other
-  dpc$ed_emerg_proc_other <- factor(
-    dpc$ed_emerg_proc_other,
+  data$ed_emerg_proc_other <- factor(
+    data$ed_emerg_proc_other,
     levels = c(1, 2, 3, 4, 5), 
     labels = c("Chest drain",
                "External fixation of fracture",
@@ -41,8 +42,8 @@ format_table1 <- function(data) {
                "Other action")) 
   
   # "ed_emerg_proc" 
-  dpc$ed_emerg_proc <- factor(
-    dpc$ed_emerg_proc,
+  data$ed_emerg_proc <- factor(
+    data$ed_emerg_proc,
     levels = c(1, 2, 3, 4, 5, 6, 7, 8), 
     labels = c("Thoracotomy",
                "Laparotomy",
@@ -54,8 +55,8 @@ format_table1 <- function(data) {
                "Other")) 
   
   #"pre_transport" 
-  dpc$pre_transport <- factor(
-    dpc$pre_transport,
+  data$pre_transport <- factor(
+    data$pre_transport,
     levels = c(1, 2, 3, 4, 5, 6, 7), 
     labels = c("Ground ambulance",
                "Helicopter ambulance",
@@ -66,55 +67,55 @@ format_table1 <- function(data) {
                "other")) 
   
   # "ed_intub_type" 
-  dpc$ed_intub_type <- factor(
-    dpc$ed_intub_type,
+  data$ed_intub_type <- factor(
+    data$ed_intub_type,
     levels = c(1, 2, 3, 4), 
     labels = c("Intubation/surgical airway with medication",
                "Supraglottic airway using medication",
                "Intubation/surgical airway without medication",
                "Supraglottic airway without medication")) 
   
-#  #  "ed_intubated" - ihopslagen med pre intub i var intub 
-#  dpc$ed_intubated <- factor(
-#    dpc$ed_intubated,
-#    levels = c(1, 2), 
-#    labels = c("Yes",
-#               "No"))
-
+  #  #  "ed_intubated" - ihopslagen med pre intub i var intub 
+  #  data$ed_intubated <- factor(
+  #    data$ed_intubated,
+  #    levels = c(1, 2), 
+  #    labels = c("Yes",
+  #               "No"))
+  
   # "pre_intub_type" 
-  dpc$pre_intub_type <- factor(
-    dpc$pre_intub_type,
+  data$pre_intub_type <- factor(
+    data$pre_intub_type,
     levels = c(1, 2, 3, 4), 
     labels = c("Intubation/surgical airway with medication",
                "Supraglottic airway using medication",
                "Intubation/surgical airway without medication",
                "Supraglottic airway without medication"))  
   
-#  #  "pre_intubated" ihopslagning med i var intub
-#  dpc$pre_intubated <- factor(
-#    dpc$pre_intubated,
-#    levels = c(1, 2), 
-#    labels = c("Yes",
-#               "No"))  
+  #  #  "pre_intubated" ihopslagning med i var intub
+  #  data$pre_intubated <- factor(
+  #    data$pre_intubated,
+  #    levels = c(1, 2), 
+  #    labels = c("Yes",
+  #               "No"))  
   
   # "pre_provided"
-  dpc$pre_provided <- factor(
-    dpc$pre_provided,
+  data$pre_provided <- factor(
+    data$pre_provided,
     levels = c(1, 3, 4), 
     labels = c("No prehospital care",
                "treatment without physician",
                "treatment with physician"))          
   
   # "FirstTraumaDT_NotDone"  
-  dpc$FirstTraumaDT_NotDone <- factor(
-    dpc$FirstTraumaDT_NotDone,
+  data$FirstTraumaDT_NotDone <- factor(
+    data$FirstTraumaDT_NotDone,
     levels = c(0, 1), 
     labels = c("CT done",
                "CT not done"))
   
   # "AlarmRePrioritised" - Ev ta bort pga reg tid från 2017?
-  dpc$AlarmRePrioritised <- factor(
-    dpc$AlarmRePrioritised,
+  data$AlarmRePrioritised <- factor(
+    data$AlarmRePrioritised,
     levels = c(1, 2, 3, 4), 
     labels = c("no reprioritization",
                "reprioritization to level 1",
@@ -122,8 +123,8 @@ format_table1 <- function(data) {
                "Alarm cancelled"))
   
   # "TraumaAlarmAtHospital" - Ev ta bort pga reg tid från 2017
-  dpc$TraumaAlarmAtHospital <- factor(
-    dpc$TraumaAlarmAtHospital,
+  data$TraumaAlarmAtHospital <- factor(
+    data$TraumaAlarmAtHospital,
     levels = c(1, 2, 99), 
     labels = c("Trauma alarm level 1",
                "Trauma alarm level 2",
@@ -131,18 +132,18 @@ format_table1 <- function(data) {
   
   # "TraumaAlarmCriteria" 
   
-#  ### Behövs denna????
-#  dpc$TraumaAlarmCriteria <- factor(
-#    dpc$TraumaAlarmCriteria,
-#    levels = c(1, 2, 3), 
-#    labels = c("National, 2 levels",
-#               "National, 1 level",
-#               "local"))
+  #  ### Behövs denna????
+  #  data$TraumaAlarmCriteria <- factor(
+  #    data$TraumaAlarmCriteria,
+  #    levels = c(1, 2, 3), 
+  #    labels = c("National, 2 levels",
+  #               "National, 1 level",
+  #               "local"))
   
   
   #  "hosp_dischg_dest"
-  dpc$hosp_dischg_dest <- factor(
-    dpc$hosp_dischg_dest,
+  data$hosp_dischg_dest <- factor(
+    data$hosp_dischg_dest,
     levels = c(1, 2, 3, 4, 5, 6, 7), 
     labels = c("Home",
                "Rehab",
@@ -153,30 +154,30 @@ format_table1 <- function(data) {
                "psychiatric care"))
   
   # "host_vent_days_NotDone"
-  dpc$host_vent_days_NotDone <- factor(
-    dpc$host_vent_days_NotDone,
+  data$host_vent_days_NotDone <- factor(
+    data$host_vent_days_NotDone,
     levels = c(0, 1),
     labels = c("On ventilator", "Not on ventilator"))
   
   # "ed_be_art_NotDone"
   
-#  ######  OBS - Inkongruent/fel jmf med övrig BE kolumn  
-#  
-#  dpc$ed_be_art_NotDone <- factor(
-#    dpc$ed_be_art_NotDone,
-#    levels = c(0, 1),
-#    labels = c("Done", "Not done"))
+  #  ######  OBS - Inkongruent/fel jmf med övrig BE kolumn  
+  #  
+  #  data$ed_be_art_NotDone <- factor(
+  #    data$ed_be_art_NotDone,
+  #    levels = c(0, 1),
+  #    labels = c("Done", "Not done"))
   
   # "ed_inr_NotDone"   
-  dpc$ed_inr_NotDone <- factor(
-    dpc$ed_inr_NotDone,
+  data$ed_inr_NotDone <- factor(
+    data$ed_inr_NotDone,
     levels = c(0, 1),
     labels = c("Done", "Not done"))
   
   
   #"pt_asa_preinjury"       
-  dpc$pt_asa_preinjury <- factor(
-    dpc$pt_asa_preinjury,
+  data$pt_asa_preinjury <- factor(
+    data$pt_asa_preinjury,
     levels = c(1, 2, 3, 4), 
     labels = c("A healthy patient",
                "Mild systemic disease",
@@ -184,20 +185,20 @@ format_table1 <- function(data) {
                "Life threatening disease"))
   
   #"pre_card_arrest" 
-  dpc$pre_card_arrest <- factor(
-    dpc$pre_card_arrest,
+  data$pre_card_arrest <- factor(
+    data$pre_card_arrest,
     levels = c(1, 2),
     labels = c("Yes", "No"))
   
   #"inj_dominant"
-  dpc$inj_dominant <- factor(
-    dpc$inj_dominant,
+  data$inj_dominant <- factor(
+    data$inj_dominant,
     levels = c(1, 2),
     labels = c("Blunt", "Penetrating"))
   
   # "inj_mechanism"  
-  dpc$inj_mechanism <- factor(
-    dpc$inj_mechanism,
+  data$inj_mechanism <- factor(
+    data$inj_mechanism,
     levels = c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12), 
     labels = c("Motor vehicle accident",
                "Motorcycle accident",
@@ -213,20 +214,20 @@ format_table1 <- function(data) {
                "Other injury"))
   
   # "inj_intention" 
-  dpc$inj_intention <- factor(
-    dpc$inj_intention,
+  data$inj_intention <- factor(
+    data$inj_intention,
     levels = c(1, 2, 3),
     labels = c("Accident", "Self-inflicted", "Abuse"))
-
+  
   #"intub"  
-  dpc$intub <- factor(
-    dpc$intub,
+  data$intub <- factor(
+    data$intub,
     levels = c(1, 2, 3),
     labels = c("Inhospital", "Not intubated", "Prehospital"))
   
   #"host_care_level" 
-  dpc$host_care_level <- factor(
-    dpc$host_care_level,
+  data$host_care_level <- factor(
+    data$host_care_level,
     levels = c(1, 2, 3, 4, 5), 
     labels = c("Emergency department",
                "General ward",
@@ -235,28 +236,28 @@ format_table1 <- function(data) {
                "Intensive care unit"))
   
   #"pt_Gender"              
-  dpc$pt_Gender <- factor(
-    dpc$pt_Gender,
+  data$pt_Gender <- factor(
+    data$pt_Gender,
     levels = c(2, 1),
     labels = c("Female", "Male"))
   
   # "res_survival"
-  dpc$res_survival <- factor(
-    dpc$res_survival,
+  data$res_survival <- factor(
+    data$res_survival,
     levels = c(1, 2),     
     labels = c("Yes", "No"))
   
   # "ofi" 
-  dpc$ofi <- factor(
-    dpc$ofi,
+  data$ofi <- factor(
+    data$ofi,
     levels = c("Yes", "No"),
     labels = c("Opportunity for improvement", "No opportunity for improvement"))
   
   #########################
   ## Change column names ##
   #########################
-
-  var_label(dpc) <- list(
+  
+  var_label(data) <- list(
     ofi = "Opportunity for improvement",
     ed_gcs_sum = "ED GCS",
     ed_sbp_value = "ED Systolic Blood Pressure",
@@ -304,8 +305,60 @@ format_table1 <- function(data) {
     NumberOfActions ="Number of interventions",
     NumberOfInjuries ="Number of injuries") ##Requires library(labelled)
   
-  
-  formated.data <- dpc
-  return(formated.data)
+  return(data)
 }
 
+create.tableone <- function(data) {
+  data <- subset(data, format(data$DateTime_Case, "%Y") != "2023")
+  
+  data <- format.table1(data)
+  
+  levels(data$ofi) <- c("OFI", "No OFI")
+
+  vars2 <-
+    c(
+      "ofi",
+      "pt_Gender",
+      "pt_age_yrs",
+      "ISS",
+      "ed_rr_value",
+      "ed_gcs_sum",
+      "ed_sbp_value",
+      "host_care_level",
+      "dt_ed_first_ct",
+      "dt_ed_emerg_proc",
+      "res_survival",
+      "ed_emerg_proc"
+    )
+  
+  render.continuous.new <- function(x) {
+    render.continuous.default(x, rounding.fn = round_pad, digits = 0)
+  }
+  
+  render.missing.new <- function(x) {
+    new <- render.missing.default(x, digits.pct = 0)
+    new <- sub("([1-9]{1}\\d{0,3}) \\(0%\\)", "\\1 \\(<1%\\)", new)
+    return(new)
+  }
+  
+  render.categorical.new <- function(x) {
+    new <- render.categorical.default(x, digits.pct = 0)
+    new <- sub("([1-9]{1}\\d{0,3}) \\(0%\\)", "\\1 \\(<1%\\)", new)
+    return(new)
+  }
+  
+  tableone <-
+    table1(
+      ~ pt_age_yrs + pt_Gender + res_survival + host_care_level + ISS + ed_rr_value + ed_gcs_sum + ed_sbp_value + dt_ed_first_ct + dt_ed_emerg_proc + ed_emerg_proc
+      | ofi,
+      data = data[, vars2],
+      render.missing = render.missing.new,
+      render.continuous = render.continuous.new,
+      render.categorical = render.categorical.new,
+      caption = "Demographic and Clinical Characteristics of patients screened for OFI.",
+      #extra.col = list(`p-value` = pvalue),
+      #extra.col.pos = 3
+    )
+  
+  return(tableone)
+}

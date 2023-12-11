@@ -10,6 +10,25 @@ csl: vancouver.csl
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+```{r setup, include=FALSE, echo=FALSE}
+library(knitr)
+library(kableExtra)
+library(flextable)
+
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, comment = NA)
+
+set_flextable_defaults(
+  font.size = 8,
+  theme_fun = theme_vanilla,
+  padding.top = 1,
+  padding.bottom = 1,
+  padding.left = 1,
+  padding.right = 1
+)
+
+output.format <- knitr::opts_knit$get('rmarkdown.pandoc.to')
+
+source("./main.R")
 ```
 
 ```{=html}
@@ -227,6 +246,20 @@ taking account of sampling strategy
 
 ### Participants
 
+```{r tab1, echo=FALSE, fig.cap="Selected sample characteristics", fig.align='center' }
+if (output.format == "latex") {
+  tab1 <- t1kable(create.tableone(dataset), "latex", longtable = T, booktabs = T) %>%
+    kable_styling(latex_options = c("repeat_header", "condensed"), repeat_header_text = "(cont.)", font_size = 8) %>%
+    kableExtra::footnote(general = "\\\\textit{Definition of  abbreviations:} OFI = Opportunity for Improvement; ED = Emergency Department; GCS = Glascow Coma Scale.\\\\newline Time to first CT and Time to definitive treatment: Measured in minutes from arrival at the hospital.", general_title = "",threeparttable =  TRUE, escape = FALSE)
+} else if (output.format == "docx") {
+    tab1 <- t1flex(create.tableone(dataset)) %>%
+      add_footer_lines("OFI = Opportunity for Improvement; ED = Emergency Department; GCS = Glascow Coma Scale.\n Time to first CT and Time to definitive treatment: Measured in minutes from arrival at the hospital.") %>%
+      autofit()
+}
+
+tab1
+```
+
 Karolinska trauma registry contains 11864 patients, of which 6310 are reviewed for OFI, either through selection by individual review or application of audit filters, as well as an unknown process (n=2). Through this, 1316 patients were selected for the morbidity conference, and 596 patients for the mortality conference. Out of 596 deaths reviewed, 35 were found to be preventable (n=4) or possibly preventable (n=31). The remaining 561 patients were thus rendered non-preventable without OFI. Further, 1316 alive patients were included during a morbidity conference, of which 396 (7%) were identified as cases with OFI.
 
 Among the 6310 patients, the majority (n=4383) (69%) were male, and the mean age was 45 (SD 21). Overall, the mortality in the group was 599 (9%).
@@ -241,6 +274,16 @@ The variables most frequently missing data were "Time to normal BE" (n=6107), "P
 ### Outcome data
 
 ### Main result
+
+```{r main.result, echo=FALSE}
+kable(cohort.performance.results, caption = "LÄGG TILL CAPTION HÄR")
+```
+
+<!-- KS: P-value was < 10-6 between the cohorts. Present that value where it suits you -->
+
+```{r roc.curves, out.width="80%",fig.cap="ROC Curves. LÄGG CAPTION HÄR", echo=FALSE, fig.align='center'}
+knitr::include_graphics("figures/roc.pdf", error = FALSE)
+```
 
 ### Other analysis
 
