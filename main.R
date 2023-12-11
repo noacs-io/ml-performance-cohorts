@@ -80,3 +80,17 @@ bm.no.tbi <- dataset[dataset$cohort == "blunt multisystem without TBI",]
 
 bm.no.tbi.auc <- pROC::auc(ifelse(bm.no.tbi$ofi == "Yes", 1, 0), bm.no.tbi$repeat_1)
 print(bm.no.tbi.auc)
+
+#### Table1
+
+install.packages("gtsummary")
+
+library(tidyverse)
+library(gtsummary)
+
+table1 <- 
+  trial %>%
+  tbl_summary(include = c(age, grade, response))
+
+  
+

@@ -235,6 +235,7 @@ In the group identified as OFI (n = 431), the mean age was somewhat higher than 
 
 The variables most frequently missing data were "Time to normal BE" (n=6107), "Pre-hospital intubation type" (N=5812), and "Emergency department intubation type" (n=5749).
 
+
 ### Descriptive data
 
 ### Outcome data
