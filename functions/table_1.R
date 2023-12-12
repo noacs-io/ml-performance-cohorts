@@ -303,14 +303,13 @@ format.table1 <- function(data) {
     dt_alarm_scene ="Injury scene time",        
     dt_ed_norm_be ="Time to normal base excess",
     NumberOfActions ="Number of interventions",
-    NumberOfInjuries ="Number of injuries") ##Requires library(labelled)
+    NumberOfInjuries ="Number of injuries",
+    cohort = "Clinical cohort") ##Requires library(labelled)
   
   return(data)
 }
 
 create.tableone <- function(data) {
-  data <- subset(data, format(data$DateTime_Case, "%Y") != "2023")
-  
   data <- format.table1(data)
   
   levels(data$ofi) <- c("OFI", "No OFI")
@@ -325,10 +324,8 @@ create.tableone <- function(data) {
       "ed_gcs_sum",
       "ed_sbp_value",
       "host_care_level",
-      "dt_ed_first_ct",
-      "dt_ed_emerg_proc",
       "res_survival",
-      "ed_emerg_proc"
+      "cohort"
     )
   
   render.continuous.new <- function(x) {
@@ -349,13 +346,13 @@ create.tableone <- function(data) {
   
   tableone <-
     table1(
-      ~ pt_age_yrs + pt_Gender + res_survival + host_care_level + ISS + ed_rr_value + ed_gcs_sum + ed_sbp_value + dt_ed_first_ct + dt_ed_emerg_proc + ed_emerg_proc
+      ~ pt_age_yrs + pt_Gender + res_survival + host_care_level + ISS + ed_rr_value + ed_gcs_sum + ed_sbp_value + cohort 
       | ofi,
       data = data[, vars2],
       render.missing = render.missing.new,
       render.continuous = render.continuous.new,
       render.categorical = render.categorical.new,
-      caption = "Demographic and Clinical Characteristics of patients screened for OFI.",
+      caption = "Demographic and clinical characteristics of the study sample.",
       #extra.col = list(`p-value` = pvalue),
       #extra.col.pos = 3
     )
