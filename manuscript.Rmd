@@ -1,5 +1,5 @@
 ---
-title: "Performance of prediction models for opportunities for improvment in trauma care among women compared to men and across patient cohorts"
+title: "Performance of prediction models for opportunities for improvment in trauma care across patient cohorts"
 author: "Anna Thoss"
 output:
   pdf_document: default
@@ -61,48 +61,45 @@ study" -->
 what was done and what was found. Not more than 300 words. -->
 ```
 ## Background
+Trauma is among the leading causes of mortality and morbidity worldwide. The selective review of patient's mortality and morbidity cases is used to improve quality of care through identification of opportunities for improvement (OFI). The aim of this study was to compare how machine learning models perform the prediction of OFI across different trauma cohorts. 
 
 ## Methods
+We conducted a registry based study using all trauma patients at the Karolinska University Hospital from 2017 till 2021 that had undergone review for possible OFI. Previously trained machine learning models were assessed using statistical analysis to determine their prediction value across different patient cohorts. 
 
 ## Results
 
 ## Conclusion
 
+
+
 # Introduction
+Trauma, defined as the clinical entity composed of the combination of physical injury and the body's associated responses [@gerdin_risk_2015] is a significant public health concern worldwide. It accounts for a substantial portion of morbidity and mortality rates, being the cause of 4.3 million fatalities each year [@injuries2020]. It is the leading cause of death for people aged 18-39 [@Peng2023-gd]. Trauma, and care of patients with traumatic injuries, have long been a significant target point for healthcare improvement programs [@WHO2009]. Multidisciplinary morbidity and mortality conferences form a cornerstone of initiatives dedicated to enhancing the quality of trauma care and consequently, improving patient outcomes [@Santana2014].
 
-Trauma, defined as the clinical entity composed of the combination of physical injury and the body's associated responses [@gerdin_risk_2015] is a significant public health concern worldwide, accounting for a substantial portion of morbidity and mortality rates, being the cause of 4.3 million fatalities each year [@injuries2020]. It is the leading cause of death for people aged 18-39 [@Peng2023-gd]. Trauma, and care of patients with traumatic injuries, have long been a significant target point for healthcare improvement programs [@WHO2009]. Multidisciplinary morbidity and mortality conferences form a cornerstone of initiatives dedicated to enhancing the quality of trauma care and consequently, improving patient outcomes [@Santana2014].
-
-#### Opportunities for improvement
-
+### Opportunities for improvement
 Audit filters, a system used to flag abnormal clinical parameters as possible opportunities for improvement (OFI), are applied to determine possible events in patient care that are associated with unfavourable outcomes. The occurrence of such an event triggers a review process, which in turn leads to a meeting of the multidisciplinary review board during mortality and morbidity conferences. An OFI is a consensus decision made during a conference and includes proposals for corrective actions, and when appropriate implementation of corrective measures to address systematic errors and feedback to individual practitioners [@McDermott_1994]. At mortality and morbidity conferences, representatives from different professions and specialities adjacent to trauma care come together to discuss care provided to a specific patient and compare it to care given under optimal conditions. The findings of such a conference are whether OFI can be found in any given case. Examples of OFI may include lack of resources and management errors [@Lazzara2020]. The use of audit filters has its drawbacks, being associated with high rates of false positives [@Sanddal2011; @Ghorbani2018; @Evans2009].
 
-#### Artificial intelligence
-
-In recent years, artificial intelligence (AI) has made great advances, making it a topic of interest in regard to healthcare applications. Research on AI implementation for clinical use has become commonplace and has already been tried in some clinical contexts, such as aiding in the diagnosis of pathologies through analysis of radiological images [@Cellina2022-qp] as well as epidemiological prediction of disease patterns, an example being during the COVID-19 pandemic [@Chen2020-ue].
+### Artificial intelligence
+In recent years, artificial intelligence (AI) has made great advances, making it an exciting opportunity for the development of  more sophisticated prediction models. This opens up a wide field of possible future healthcare applications. Research on AI implementation for clinical use has become commonplace and has already been tried in some clinical contexts, such as aiding in the diagnosis of pathologies through analysis of radiological images [@Cellina2022-qp] as well as epidemiological prediction of disease patterns, an example being during the COVID-19 pandemic [@Chen2020-ue].
 
 With AI, computing is used to mimic human intelligence, characterized by its ability to learn and reason. Through predictive modelling, AI can be used as a tool to problem solve. Computation has the advantage of analysing great quantities of data in a short time, giving it an edge [@Cellina2022-qp]. The primary way to achieve AI is through machine learning (ML), in which statistical modelling is applied to a computer system where it learns from previous data, and thus circumvents human programming. The approach with ML has increasingly been utilized to analyse data and can be used to gain further information from data, such as making predictions of outcomes[@MLJung]. The ability to improve modelling algorithms with the use of ML thus has the ability to improve said algorithms autonomously, which in turn opens the door for a wide array of applications in healthcare. One such application is to develop more accurate prediction models that can further quality improvement programs.
 
 ### AI in trauma care
+Following the general trend towards implementation of machine learning models within healthcare, there has been research into possible application within the wider field of trauma care. Previous methods to predict outcomes within trauma, such as Injury severity score (ISS) and Trauma and Injury severity score (TRISS) were developed using much smaller quantities of data than processing allows for these days[@Zhang2022], this has lead some to call their accuracy of prediction into question.[@Schetinin2018]. There is an implicit heterogeneity to trauma patients, which lends itself well to machine learning modelling, having not only the ability to make predictions based on a greater dataset, but also circumvents problems as it can handle unstructured and nonlinear data and account for missing values.[@Zhang2022]
 
-<!-- Expand on this section to introduce AI/ML in trauma care more generally, and then focus on the application of ML to select patients for M&M -->
+Previous studies have found that delay of treatment along with errors in judgement are the leading causes of mortality in level 1 trauma centres.[@Teixeira2007;@Teixeira2009] Machine learning has been found to outperform clinical tools for prediction of mortality.[@Kareemi2021] Research on morbidity in trauma patients has been less conclusive, and fewer studies have been done on the topic, with most focusing on mortality.[@Zhang2022] 
 
-To enhance the precision of the selection process for mortality and morbidity conferences, there have been efforts to introduce trauma mortality prediction models. Nevertheless, the performance of these models has been unsatisfactory, being poor predictors for OFI [@Ghorbani2018; @Heim_2016]. This is likely because these models were originally developed with a focus on predicting mortality rather than morbidity or instances of care failures within the realm of trauma care.
+To enhance the precision of the selection process for mortality and morbidity conferences, there have been efforts to introduce trauma mortality prediction models. Nevertheless, the performance of these models has been unsatisfactory, being poor predictors for OFI [@Ghorbani2018; @Heim_2016]. This is likely because these models were originally developed with a focus on predicting mortality rather than morbidity or instances of care failures within the realm of trauma care. Machine learning-based prediction models have been found to outperform conventional methods to predict opportunities for improvement [@Attergrim2023].
 
-Machine learning-based prediction models have been found to outperform conventional methods to predict opportunities for improvement [@Attergrim2023].
+### Trauma care in different patient cohorts
+The array of injuries to the body that fall under trauma is wide. Following this, there is also a wide array of bodily responses to said injury. For instance, traumatic brain injury (TBI) will impact the body in different ways than an injury without TBI, since the body's response mechanism might be impaired by the neural injury in itself. This was shown BLAA BLAA BLAA. [Behöver KÄLLA] Along the same line, the mechanism of injury, such as blunt force trauma compared to severe penetrating trauma may also trigger different mechanisms and present with a different set of parameters clinical[BEHÖvER KÄLLA]. Thus, it is important, that given the differences in cohorts falling under the wider term trauma patient, that the model used for predicting OFI does not discriminate or vary widely between the cohorts, so as not to leave out a subgroup of patients from optimising the care of said patients. 
 
-#### Trauma care in different patient cohorts
+- predicting outcomes is difficult, complexity. young group. 
 
-<!-- Similar performance across different subgroups is also important from a fairness perspective, meaning that if the model performs worse among women, then we risk providing lower quality care to women, because we might miss important OFI -->
+# Aim
 
-Men make up a disproportionally large group compared to women when it comes to trauma. Each year, almost twice as many men die due to traumatic injury when compared to women, with the distribution of different types of injury varying by demographic and region [@WHO2014]. Females have been shown to have a higher survival following trauma in higher income countries, whereas those in lower income countries show no difference compared to men. Differences in cell-mediated immune response following haemorrhage, differences in post-traumatic cytokine levels, and potential protective effects of oestrogen have been proposed to be the cause of the disparity between these groups [@Pendleton2022]. It is important, that due to the differences between men and women, that the model for prediction has similar performance in these subgroups. Furthermore, it is important to establish if trained models perform equally well across different cohorts within the wider span of trauma, such as patients with traumatic brain injury (TBI) and without.
-
-## Aim
-
-To assess the difference in performance of prediction models for opportunities for improvement in trauma care among women compared to men and across clinical trauma cohorts.
+To assess the difference in performance of prediction models for opportunities for improvement in trauma care across different clinical trauma cohorts.
 
 # Methods
-
-## Methods
 
 #### Study setting and participants
 
@@ -166,12 +163,21 @@ The different models' performance were assessed in the following cohorts:
         or
 
     b.  Pre- or in-hospital intubation
+    
+4.  Severe penetrating: At least one AIS \>2 injury in any of the following AIS body regions: neck, thorax, abdomen. 
+
+5.  Other cohort: Patient does not fall into any of the above. 
+
 
 Along with these cohorts, all machine learning models were assessed regarding differences between male and female sex in their prediction of OFI.
 
 #### Statistical analysis
 
 R was employed for all statistical analysis. For the analysis, a 95% confidence level and 5% significance level were employed. For each model, the performance was assessed in the predefined cohorts and compared to other models performance in regards to sensitivity and specificity.
+
+## Ethical considerations
+
+The nature of this study is non-invasive. However, handling of registry data constituts a risk for breach of patients integrity. The registry used in this study does contain personal identification. In order to minimize the risk of breach, patients have been semi-anonymized after collection of data and been assigned a new identification number upon entry into dataset. Due to the nature of the patient population, patients have not consented previous to entry into the registry, thus, there is an opt out principle applied here. This is common with registry data in Sweden, and opens up opportunities for studies in a wide range of fields. In turn, more scientific knowledge has great potential for benefit, both on the societal scale, as well as the individual. Thus, the risk for the individual is comparably small. Further, no individual patients data is presenteed in the study, mitigating risk of violating personal integrity. The study has been granted ethical permit, with the record number 2021-02541 and 2021-03531.
 
 ## Study design
 
@@ -372,6 +378,67 @@ plot(pressure)
 You can also mix text and code, so called inline code, like this: `r 2+5`.
 
 # Discussion
+### Key results
+- Summering av resultat + koppla till aim
+
+- Limitations: 
+
+The potential of machine learning to aid clinicians in their efforts to improve trauma care quality and test the viability of its implementation in regards to application in different cohorts of trauma patients was at the forefront of this investigation. The result show that our models perform well in identifying OFI across the investigated cohorts. 
+
+As this is a novel field, and research on similar applications of machine learning models to identify both mortality as well as morbidity is slim, especially in regard to OFI, it is hard to make a though discussion on how it compares to other findings in the field. However, a review from 2022 identified 
+
+ <!-- Diskussionen kan läsas fristående och inleds därför
+med en kort sammanfattning av syfte eller
+problemställning, och viktigaste fynd 
+
+Egna resultat analyseras och diskuteras i
+förhållande till studiens syfte
+
+
+Egna resultat analyseras och diskuteras i
+förhållande till stödjande resp motsägande aktuell
+forskning --> 
+
+### Limitations
+
+<!-- Studiens (tekniska) styrkor och svagheter
+diskuteras (t ex val av metod/design och
+tillförlitlighet av metod och data) i eget stycke med
+särskild underrubrik --> 
+
+The study had several limitations. Firstly, the nature of OFI is defined as a binary- variable. However, events leading up to a case being positive for OFI contains a multitude of variables, and can be determined by outcomes ranging from bad documentation to preventable death. Behind these are a diverse set of possible clinical events, which in turn can be determined by different predictors. 
+
+Secondly, our learners are dependent on the current selection process for OFI, as this makes out the training data and thus makes out the groundwork for what is considered OFI in our dataset. As a consequence, the models are prone to the same limitations as the current system of audit filters. The review process is dependent both the individual review of specialized nurses, along with the current set of audit filters, which may not be the optimal parameters for demeriting OFI. This introduces an inherent bias. The audit filter system favour some types of error, while possibly missing others. At Karolinska University Hospital, the current system is more apt at identifying severe clinical outcomes, such as preventable death, or patient cases with more interventions or longer hospital stays, and flagging them as possible OFI. Higher ISS scores and "Days in hospital" have been found to be predictors of high importance when identifying OFI [Hussein]. This in turn introduces possible selection bias, giving a sewed view of errors within the trauma care, and as such not a holistic view of the trauma care quality. 
+
+Further, machine learning models are suboptimal when applied to cases with rare events, as they are limited to what they have previously been trained on. This means that not only are they limited when finding OFI in cases with novel predictors or events that lead with error, but the models are also prone to creating a self-reinforcing cycle, making them specialised on finding a set of OFI with accuracy. The current system can circumvent such by the individual review followed by a mortality and morbidity conference. If the model approach to predicting OFI is to be implemented in clinical practice, some other form, either individual review or other form of identification would be needed to supplement the machine learning model to assure prediction previously unknown basis for OFI. 
+
+Finally, given that the aim of identifying OFI at mortality and morbidity conferences is the correction of errors within the system of trauma care, with time and implementation of corrective actions, the the scenarios and following this the parameters that predict OFI may change. 
+
+### Interpretation
+
+### Generalisability
+
+<!-- Studiens praktiska implikationer eller betydelse
+avseende medicinvetenskapliga/samhälleliga
+koncept eller modeller diskuteras i eget stycke
+med särskild underrubrik. Beskriv också och
+problematisera aspekter av likabehandling inom
+det valda forskningsområdet. Om likabehandling
+inte anses vara relevant för studien ska detta
+motiveras --> 
+
+"Machine learning has the potential for heavy
+bias, and the scrutiny of data sets, feature selection, and
+external validation are imperative for further
+implementation." - nr 18 review 
+
+### Further research 
+<!-- Under rubriken Fortsatta studier ges konkreta
+förslag på nya hypoteser/frågeställningar och
+studiedesign som kan ge svar på dessa -->
+
+- Single center study > results illustrate situation in Stockholm. 
+- Difference in performance men vs women. 
 
 ```{=html}
 <!--
