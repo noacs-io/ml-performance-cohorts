@@ -277,7 +277,10 @@ if (output.format == "latex") {
 tab1
 ```
 
-Karolinska trauma registry contains 11864 patients, of which 6310 are reviewed for OFI, either through selection by individual review or application of audit filters, as well as an unknown process (n=2). Through this, 1316 patients were selected for the morbidity conference, and 596 patients for the mortality conference. Out of 596 deaths reviewed, 35 were found to be preventable (n=4) or possibly preventable (n=31). The remaining 561 patients were thus rendered non-preventable without OFI. Further, 1316 alive patients were included during a morbidity conference, of which 396 (7%) were identified as cases with OFI.
+Karolinska trauma registry contains 11864 patients<!--Dubbelkolla antal!-->, of which 8309 are reviewed for OFI, either through selection by individual review or application of audit filters, as well as an unknown process <!--(n=2)-->. 
+
+
+Through this, 1316 patients were selected for the morbidity conference, and 596 patients for the mortality conference. Out of 596 deaths reviewed, 35 were found to be preventable (n=4) or possibly preventable (n=31). The remaining 561 patients were thus rendered non-preventable without OFI. Further, 1316 alive patients were included during a morbidity conference, of which 396 (7%) were identified as cases with OFI.
 
 
 Among the 6310 patients, the majority (n=4383) (69%) were male, and the mean age was 45 (SD 21). Overall, the mortality in the group was 599 (9%).
