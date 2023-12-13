@@ -4,6 +4,7 @@ author: "Anna Thoss"
 output:
   pdf_document: default
   html_document: default
+  word_document: default
 bibliography: bibliography.bib
 csl: vancouver.csl
 ---
@@ -269,7 +270,7 @@ if (output.format == "latex") {
     kableExtra::footnote(general = "\\\\textit{Definition of  abbreviations:} OFI = Opportunity for Improvement; ED = Emergency Department; GCS = Glascow Coma Scale.\\\\newline Time to first CT and Time to definitive treatment: Measured in minutes from arrival at the hospital.", general_title = "",threeparttable =  TRUE, escape = FALSE)
 } else if (output.format == "docx") {
     tab1 <- t1flex(create.tableone(dataset)) %>%
-      add_footer_lines("OFI = Opportunity for Improvement; ED = Emergency Department; GCS = Glascow Coma Scale.\n Time to first CT and Time to definitive treatment: Measured in minutes from arrival at the hospital.") %>%
+      add_footer_lines("OFI = Opportunity for Improvement; ED = Emergency Department; GCS = Glascow Coma Scale.") %>%
       autofit()
 }
 
