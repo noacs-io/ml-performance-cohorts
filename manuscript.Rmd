@@ -297,7 +297,8 @@ The variables most frequently missing data were "Time to normal BE" (n=6107), "P
 ### Main result
 
 ```{r main.result, echo=FALSE}
-kable(cohort.performance.results, caption = "LÄGG TILL CAPTION HÄR")
+main.results.table <- flextable(cohort.performance.results) %>%
+  set_caption("Area under the curve (AUC) across clinical cohorts")
 ```
 
 <!-- KS: P-value was < 10-6 between the cohorts. Present that value where it suits you -->
