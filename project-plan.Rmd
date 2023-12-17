@@ -61,8 +61,9 @@ The trauma registry encompasses approximately 12,000 patients treated from 2012 
 
 OFI are identified through meetings of the multidisciplinary review board during mortality and morbidity conferences. An OFI is a consensus decision made during a conference and includes proposals for corrective actions. These in turn are recorded in the trauma care quality database. The trauma care quality database also includes data relevant to mortality and morbidity conferences, such as audit filters. The mortality and morbidity conferences at Karolinska University Hospital involve professionals from various specialties within trauma care, including surgery, neurosurgery, orthopedics, anesthesia, intensive care, nursing, and radiology. Cases considered for a conference go through multiple rounds of review. Mortality leads to direct inclusion. Between 2013 and 2017, non-fatal poor outcomes were identified through reviews conducted by a specialized trauma nurse to identify potential OFI. Starting in 2017, the process was formalized, involving an initial review by a specialized trauma nurse along with the application of audit filters. All cases that were flagged either during the initial nurse review or by the audit filters underwent a secondary review conducted by two specialized nurses. If the second review identified potential areas for improvement (OFI), the case was marked for discussion in a multidisciplinary conference.
 
-![](assets/OFI-flow.png)
-Figure illustrating process of mortality and morbidity conference at Karolinska University Hospital.
+![](assets/OFI-flow.png) Figure illustrating process of mortality and morbidity conference at Karolinska University Hospital.
+
+<!-- Uppdatera!-->
 
 #### Eligibility criteria
 
