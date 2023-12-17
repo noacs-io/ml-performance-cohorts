@@ -25,7 +25,7 @@ set_flextable_defaults(
   padding.right = 1
 )
 
-output.format <- knitr::opts_knit$get('rmarkdown.pandoc.to')
+output.format <- knitr::opts_knit$get("rmarkdown.pandoc.to")
 
 source("./main.R")
 ```
@@ -90,7 +90,7 @@ Following the general trend towards implementation of machine learning models wi
 
 Previous studies have found that delay of treatment along with errors in judgement are the leading causes of mortality in level 1 trauma centres.[@Teixeira2007; @Teixeira2009] Machine learning has been found to outperform clinical tools for prediction of mortality.[@Kareemi2021] Research on morbidity in trauma patients has been less conclusive, and fewer studies have been done on the topic, with most focusing on mortality.[@Zhang2022]
 
-To enhance the precision of the selection process for mortality and morbidity conferences, there have been efforts to introduce trauma mortality prediction models. Nevertheless, the performance of these models has been unsatisfactory, being poor predictors for OFI [@Ghorbani2018; @Heim_2016]. This is likely because these models were originally developed with a focus on predicting mortality rather than morbidity or instances of care failures within the realm of trauma care. Machine learning-based prediction models have been found to outperform conventional methods to predict opportunities for improvement [@Attergrim2023].
+To enhance the precision of the selection process for mortality and morbidity conferences, there have been efforts to introduce trauma mortality prediction models. Nevertheless, the performance of these models has been unsatisfactory, being poor predictors for OFI [@Ghorbani2018; @Heim_2016]. This is likely because these models were originally developed with a focus on predicting mortality rather than morbidity or instances of care failures within the realm of trauma care. Machine learning-based prediction models have been found to outperform conventional methods to predict opportunities for improvement, and the learner XGBoost showed particular promise [@Attergrim2023].
 
 ### Trauma care in different patient cohorts
 
@@ -98,7 +98,7 @@ Trauma is a wide field with a heterogeneous patient population as well as encomp
 
 # Aim
 
-To assess the difference in performance of prediction models for opportunities for improvement in trauma care across different clinical trauma cohorts.
+To assess the difference in performance of a machine learning based prediction model for opportunities for improvement in trauma care across different clinical trauma cohorts.
 
 # Methods
 
@@ -124,7 +124,7 @@ Between 2013 and 2017, non-fatal poor outcomes were identified through reviews c
 
 ### Predictors
 
-All variables from the trauma registry are considered potential predictors in our analysis. The models have been developed and trained on the data set previous to this study [@Attergrim2023]. Eight models are included, all being developed using the Tidymodels framework [@tidymodels]. These include logistic regression (LR), random forest (RF), decision tree (DT), support vector machine with a radial basis kernel (SVM), XGBoost, LightGBM, CatBoost, and k-nearest neighbor (k-NN).
+All variables from the trauma registry are considered potential predictors in our analysis. The models have been developed and trained on the data set previous to this study [@Attergrim2023]. Eight models were included in the original study, all being developed using the Tidymodels framework [@tidymodels]. These include logistic regression (LR), random forest (RF), decision tree (DT), support vector machine with a radial basis kernel (SVM), XGBoost, LightGBM, CatBoost, and k-nearest neighbor (k-NN). In this study, we focused on the model developed using XGBoost, as this model performed the best in the original paper.
 
 Our variables include information spanning the pre-hospital, initial care, and subsequent in-hospital phases, which include initial vital signs, timing, and types of procedures and interventions, duration and level of care, injury details, mechanisms of injury, injury types, and standard demographic information. This array of predictors comprises both continuous and categorical variables, ultimately resulting in the final models utilizing a total of 45 predictors.
 
@@ -264,23 +264,23 @@ taking account of sampling strategy
 if (output.format == "latex") {
   tab1 <- t1kable(create.tableone(dataset), "latex", longtable = T, booktabs = T) %>%
     kable_styling(latex_options = c("repeat_header", "condensed"), repeat_header_text = "(cont.)", font_size = 8) %>%
-    kableExtra::footnote(general = "\\\\textit{Definition of  abbreviations:} OFI = Opportunity for Improvement; ED = Emergency Department; GCS = Glascow Coma Scale.\\\\newline Time to first CT and Time to definitive treatment: Measured in minutes from arrival at the hospital.", general_title = "",threeparttable =  TRUE, escape = FALSE)
+    kableExtra::footnote(general = "\\\\textit{Definition of  abbreviations:} OFI = Opportunity for Improvement; ED = Emergency Department; GCS = Glascow Coma Scale.\\\\newline Time to first CT and Time to definitive treatment: Measured in minutes from arrival at the hospital.", general_title = "", threeparttable = TRUE, escape = FALSE)
 } else if (output.format == "docx") {
-    tab1 <- t1flex(create.tableone(dataset)) %>%
-      add_footer_lines("OFI = Opportunity for Improvement; ED = Emergency Department; GCS = Glascow Coma Scale.") %>%
-      autofit()
+  tab1 <- t1flex(create.tableone(dataset)) %>%
+    add_footer_lines("OFI = Opportunity for Improvement; ED = Emergency Department; GCS = Glascow Coma Scale.") %>%
+    autofit()
 }
 
 tab1
 ```
 
-Karolinska trauma registry contains 14022 patients, of which 8309 are reviewed for OFI, either through selection by individual review or application of audit filters, as well as an unknown process (n=2). Through this, 7571 patients were selected for the morbidity conference, and 727 patients for the mortality conference.
+The Karolinska trauma registry includes 14022 patients, of which 8309 are reviewed for OFI, either through selection by individual review or application of audit filters, as well as an unknown process (n=2). Through this, 7571 patients were selected for the morbidity conference, and 727 patients for the mortality conference.
 
 Among the 8309 patients, the majority (n=5386) (69%) were male, and the mean age was 45 (SD 21). Overall, the mortality in the group was 727 (9%). In the group identified as OFI (n = 512), the mean age was somewhat higher than in the group without OFI (n=7797) (mean 49 vs 45 years). For OFI patients, they were most commonly treated at an intensive care unit (33%), whereas patients without OFI were most commonly treated at a general ward (38%). ISS was also higher for OFI patients (mean: 18, SD:11 vs mean: 12, SD:13). "Respiratory rate" was the most common missing variable at 20% (n=1644), followed by "ED GCS" at 10% (n=866).
 
 Out of 727 deaths reviewed, 41 were found to be preventable or possibly preventable. The remaining 686 patients were thus rendered non-preventable without OFI. Further, out of the 7571 alive patients were included during a morbidity conference, 471 (6%) were identified as cases with OFI.
 
-The biggest cohort in the study was "other cohort" with 6707 (81%) of patients, followed by "blunt multisystem without TBI" at 9% (n=708). They also are the most common cohorts with OFI, making up 64% (n=329) and 23% (n=116) respectively. See table 1 for patient characteristics.
+The biggest cohort in the study was "other cohort" with 6707 (81%) of patients, followed by "blunt multisystem without TBI" at 9% (n=708). These were also the cohorts with the most OFI, making up 64% (n=329) and 23% (n=116) respectively. See table 1 for patient characteristics.
 
 ### Main result
 
@@ -289,7 +289,7 @@ main.results.table <- flextable(cohort.performance.results) %>%
   set_caption("Area under the curve (AUC) across clinical cohorts")
 ```
 
-We compared the different cohorts with AUC as our performance metric. (See table 2) Isolated severe TBI had the highest AUC at 0.811 (0.807-0.814), followed by "Other cohort" (AUC 0.761 0.76-0.762). The model that performed the lowest in the cohort "Blunt multisystem with TBI" (AUC 0.696, 0.692-0.701) Figure 2 shows details of the receiver operating curve. The P-value between the different cohorts was 1 x 10 \^-6.
+We compared the performance of the ML model in the different cohorts with AUC as our performance metric (See table 2). The ML model performed best in the cohort of patients with isolated severe TBI, in which it had an AUC of 0.811 (0.807-0.814), followed by "Other cohort" (AUC 0.761 0.76-0.762). The ML model performed worst in the cohort of patients with blunt multisystem trauma with TBI (AUC 0.696, 0.692-0.701). Figure 2 shows details of the receiver operating curves. The P-value between the different cohorts was 1 x 10 \^-6, meaning that there were significant differences in AUC between cohorts.
 
 ```{r roc.curves, out.width="80%",fig.cap="ROC Curves. LÄGG CAPTION HÄR", echo=FALSE, fig.align='center'}
 knitr::include_graphics("figures/roc.pdf", error = FALSE)
@@ -372,9 +372,9 @@ You can also mix text and code, so called inline code, like this: `r 2+5`.
 
 ### Key results
 
-We set out to assess machine learning models viability as a tool to aid clinicians in their effort to improve trauma care quality, and specifically how they would perform across different trauma cohorts. We found that there is some variance in the models performance between the different cohorts, with "Blunt multisystem without TBI" performing the lowest, despite being the largest clearly defined trauma cohort in the study. The largest group "Other cohorts", which is made up of cases falling outside of the boundaries for the other formalized cohorts performs the best over all, despite possibly encompassing the largest heterogeneity.
+We set out to assess the performance of a model based on the machine learner XGBoost's viability as a tool to aid clinicians in their effort to improve trauma care quality, and specifically how they would perform across different trauma cohorts. We found that there is some variation in the model's performance between the different cohorts, with "Blunt multisystem without TBI" performing the lowest, despite being the largest clearly defined trauma cohort in the study. The largest group "Other cohorts", which is made up of cases falling outside of the boundaries for the other formalized cohorts performs the best over all, despite possibly encompassing the largest heterogeneity.
 
-A previous study on the same dataset has found that audit filters, with an AUC of 0.624, are outperformed by our models when the dataset is not categorised by cohorts.[@Attergrim2023] It is unclear how audit filters perform in this context across cohorts as this was outside of the scope the study. Interestingly, the model performed better on the "Isolated severe TBI" cohort in terms of AUC then the best model in the aforementioned study (AUC 0.811 vs 0.789). A 2020 study found similarly good performance of machine learning models in TBI patients looking to predict poor outcomes. [@Matsuo2020] This may suggest that some models inclination to perform well in prediction of traumatic brain injury, whereas outcomes linked to other trauma cohorts may be harder to predict.
+A previous study on the same dataset has found that audit filters, with an AUC of 0.624, are outperformed by ML models when the dataset is not categorised by cohorts.[@Attergrim2023] It is unclear how audit filters perform in this context across cohorts as this was outside of the scope the study. Interestingly, the model performed better on the "Isolated severe TBI" cohort in terms of AUC then the best model in the aforementioned study (AUC 0.811 vs 0.789). A 2020 study found similarly good performance of machine learning models in TBI patients looking to predict poor outcomes. [@Matsuo2020] This may suggest that some models inclination to perform well in prediction of traumatic brain injury, whereas outcomes linked to other trauma cohorts may be harder to predict.
 
 Overall the model perform well in the prediction of OFI across the cohorts. The application of machine learning models to outcomes within trauma is commonly more widely studied with more straight forward prediction of mortality, rather than the homogeneous reasons that make up the outcome of OFI. [@Zhang2022; @Gauss2023] Therefore, it is hard to make direct comparisons to other studies findings in this case, as they are generally either focused on a outcome far less complex, or not specifically tied to performance in outcomes in a particular cohort.
 
@@ -382,7 +382,7 @@ Overall the model perform well in the prediction of OFI across the cohorts. The 
 
 The study had several limitations. Firstly, the nature of OFI is defined as a binary- variable. However, events leading up to a case being positive for OFI contains a multitude of variables, and can be determined by outcomes ranging from bad documentation to preventable death. Behind these are a diverse set of possible clinical events, which in turn can be determined by different predictors. It has been suggested that data with higher resolution, such as vital signs series rather then single values could be a solution to this. However this comes with a drawback, as the current collection of data is based on the Upstein template (Uniform Reporting of Data following Major Trauma), and as such opens the door to a wider set of application in other contexts. Moving away from this has important implications for external validity of the model. [@Attergrim2023]
 
-Secondly, our learners are dependent on the current selection process for OFI, as this makes out the training data and thus makes out the groundwork for what is considered OFI in our dataset. As a consequence, the models are prone to some of the same limitations as the current system of audit filters. The review process is dependent both the individual review of specialized nurses, along with the current set of audit filters, which may not be the optimal parameters for demeriting OFI. This introduces an inherent bias. The audit filter system favour some types of error, while possibly missing others. At Karolinska University Hospital, the current system is more apt at identifying severe clinical outcomes, such as preventable death, or patient cases with more interventions or longer hospital stays, and flagging them as possible OFI. Higher ISS scores and "Days in hospital" have been found to be predictors of high importance when identifying OFI [@Albaaj2023]. This in turn introduces possible selection bias, giving a skewed view of errors within the trauma care, and as such not a holistic view of the trauma care quality.
+Secondly, our learner is dependent on the current selection process for OFI, as this makes out the training data and thus makes out the groundwork for what is considered OFI in our dataset. As a consequence, the models are prone to some of the same limitations as the current system of audit filters. The review process is dependent both the individual review of specialized nurses, along with the current set of audit filters, which may not be the optimal parameters for demeriting<!-- Do you mean determining?--> OFI. This introduces an inherent bias. The audit filter system favour some types of error, while possibly missing others. At Karolinska University Hospital, the current system is more apt at identifying severe clinical outcomes, such as preventable death, or patient cases with more interventions or longer hospital stays, and flagging them as possible OFI. Higher ISS scores and "Days in hospital" have been found to be predictors of high importance when identifying OFI [@Albaaj2023]. This in turn introduces possible selection bias, giving a skewed view of errors within the trauma care, and as such not a holistic view of the trauma care quality.
 
 Further, machine learning models are suboptimal when applied to cases with rare events, as they are limited to what they have previously been trained on. This means that not only are they limited when finding OFI in cases with novel predictors or events that lead with error, but the models are also prone to creating a self-reinforcing cycle, making them specialised on finding a set of OFI with accuracy. The current system can circumvent such by the individual review followed by a mortality and morbidity conference. If the model approach to predicting OFI is to be implemented in clinical practice, some other form, either individual review or other form of identification would be needed to supplement the machine learning model to assure prediction previously unknown basis for OFI.
 
@@ -396,7 +396,7 @@ In this sense, as it stands state of the art machine learning models have immens
 
 A recent guideline stresses the need for more consideration of aspects such as usability, trust in algorithm output and human factor human factors to enable implementation of decision systems based on AI into clinical practice. [@Vasey2022] Key barriers to entry for these kinds of model into the medical community remain.
 
-In this study, we set out to investigate the viability of such models across cohorts. The findings suggest that not all patient types of patient cases perform as well in this context, and could need further improvement before implementation in selection of cases to be discussed at a conference. This is important from a fairness perspective, as the type of injury should not dictate the opportunity to find and correct errors in clinical practise.
+In this study, we set out to investigate the viability of a model based on the machine learner XGBoost across cohorts. The findings suggest that the model does not perform as well across all patient types, and could need further improvement before implementation in selection of cases to be discussed at a conference. This is important from a fairness perspective, as the type of injury should not dictate the opportunity to find and correct errors in clinical practise.
 
 ### Further research
 
