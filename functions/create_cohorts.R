@@ -107,19 +107,13 @@ create_cohorts <- function(dataset) {
   # Combine in new collumn #
   ##########################
   
-  dataset$cohort <- NA
   cohort <- character(nrow(dataset))
   
-  dataset$cohort[dataset$Severe_penetrating == TRUE & dataset$inj_dominant == 2] <- "severe penetrating"
-  dataset$cohort[dataset$TBI == TRUE & dataset$BM == TRUE & dataset$inj_dominant == 1] <- "blunt multisystem with TBI"
-  dataset$cohort[dataset$TBI == FALSE & dataset$BM == TRUE & dataset$inj_dominant == 1] <- "blunt multisystem without TBI"
-  dataset$cohort[dataset$TBI == TRUE & dataset$num_severe_regions < 2] <- "Isolated severe TBI"
   cohort[dataset$Severe_penetrating == TRUE & dataset$inj_dominant == 2] <- "Severe penetrating"
   cohort[dataset$TBI == TRUE & dataset$BM == TRUE & dataset$inj_dominant == 1] <- "Blunt multisystem with TBI"
   cohort[dataset$TBI == FALSE & dataset$BM == TRUE & dataset$inj_dominant == 1] <- "Blunt multisystem without TBI"
   cohort[dataset$TBI == TRUE & dataset$num_severe_regions < 2] <- "Isolated severe TBI"
   cohort[cohort == ""] <- "Other cohort"
   
-  return(dataset)
   return(as.factor(cohort))
 }
