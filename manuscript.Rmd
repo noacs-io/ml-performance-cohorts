@@ -126,11 +126,11 @@ Between 2013 and 2017, non-fatal poor outcomes were identified through reviews c
 
 All variables from the trauma registry are considered potential predictors in our analysis. The models have been developed and trained on the data set previous to this study [@Attergrim2023]. Eight models were included in the original study, all being developed using the Tidymodels framework [@tidymodels]. These include logistic regression (LR), random forest (RF), decision tree (DT), support vector machine with a radial basis kernel (SVM), XGBoost, LightGBM, CatBoost, and k-nearest neighbor (k-NN). In this study, we focused on the model developed using XGBoost, as this model performed the best in the original paper.
 
-Our variables include information spanning the pre-hospital, initial care, and subsequent in-hospital phases, which include initial vital signs, timing, and types of procedures and interventions, duration and level of care, injury details, mechanisms of injury, injury types, and standard demographic information. This array of predictors comprises both continuous and categorical variables, ultimately resulting in the final models utilizing a total of 45 predictors.
+Our variables include information spanning the pre-hospital, initial care, and subsequent in-hospital phases, which include initial vital signs, timing, and types of procedures and interventions, duration and level of care, injury details, mechanisms of injury, injury types, and standard demographic information. This array of predictors comprises both continuous and categorical variables, ultimately resulting in the final models utilizing a total of 17 predictors.
 
 ### Sample size
 
-All available data was used, with a sample size of 8309 patients. This is due to previously developed prediction models being based on all available data, as well as including all 45 predictors regardless of the learner used for the development of the model.
+All available data was used, with a sample size of 8309 patients. This is due to previously developed prediction models being based on all available data, as well as including all 17 predictors regardless of the learner used for the development of the model.
 
 ### Missing data
 
@@ -172,7 +172,7 @@ The different models' performance were assessed in the following cohorts[@Hornor
 
 ### Statistical analysis
 
-R was employed for all statistical analysis. For the analysis, a 95% confidence level and 5% significance level were employed. For each model, the performance was assessed in the predefined cohorts and compared to other models performance in regards to sensitivity and specificity. Area under the receiver operating curve (AUC) was used to measure discrimination.
+All statistical analyses were conducted using R. To extract probabilities for each patient case in the dataset, a 10-fold cross-validation strategy was employed, during which predictions for the holdout fold were recorded for each data point. We assessed performance within predefined cohorts and compared it across the different cohorts in terms of discrimination. This comparison was based on the area under the receiver operating characteristic curve (AUC). To estimate the 95% confidence interval for AUC performance, we employed bootstrapping on the extracted probabilities, repeating the process 1000 times. Additionally, an Analysis of Variance (ANOVA) test was conducted to compare differences between cohorts. A significance level of 5% was employed
 
 ### Ethical considerations
 

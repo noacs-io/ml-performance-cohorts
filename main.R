@@ -55,8 +55,6 @@ dataset <-  dataset %>%
   mutate(cohort = create_cohorts(.))
 
 # load results and merge into main dataframe.
-results <- readRDS("/opt/data/ml-ofi/random_predictions.rds")
-dataset <- merge(dataset, results$cat, by = "did", all.x = TRUE)
 results <- readRDS("/opt/data/ml-ofi/results/23-11-29-21-39_extract/results.rds")
 dataset <- dataset %>%
   left_join(results[[model.name]], by = "did") %>%
@@ -76,15 +74,7 @@ resample.calculate.auc <- function(cohort.data, bootstrap.iter) {
   roc_auc_vec(bootstrap.sample$ofi, bootstrap.sample$model_prediction, event_level = "second")
 }
 
-# Calculate AUC for the model as a whole
-binary_labels <- ifelse(dataset$ofi == "Yes", 1, 0)
-print(pROC::auc(binary_labels, dataset$repeat_1))
 main.results.path <- "results/main_results.rds"
-
-#### ex på hur man kan räkna AUC för blunt multisystem without Traumatic brain injury  
-
-bm.no.tbi <- dataset[dataset$cohort == "blunt multisystem without TBI",]
-
 
 if(!file.exists(main.results.path)) {
   
@@ -126,12 +116,12 @@ cohort.performance.results <- results %>%
                    cohort.ci[["Estimate"]], 
                    cohort.ci[["CI lower"]], 
                    cohort.ci[["CI upper"]]))
-    })) %>%
+  })) %>%
   mutate(N = map_int(cohort, function(cohort.name){
     return(cohort.datasets %>%
-      filter(cohort == cohort.name) %>%
-      unnest(data) %>%
-      nrow())
+             filter(cohort == cohort.name) %>%
+             unnest(data) %>%
+             nrow())
   })) %>%
   select(-auc) %>%
   rename(Cohort = cohort) %>%
@@ -186,4 +176,3 @@ cohort.roc <- ggroc(cohort.roc.objs) +
   annotate("text", x=0.41, y=0.485, label= "No discrimination", size = 4.5)
 
 ggsave("figures/roc.pdf", plot = cohort.roc, device = "pdf", height=10, width = 10)
-
